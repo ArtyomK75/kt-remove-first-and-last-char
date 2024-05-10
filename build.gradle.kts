@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("jvm") version "1.8.0"
     application
@@ -19,8 +21,12 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "19"
+}
+
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(19)
 }
 
 detekt {
